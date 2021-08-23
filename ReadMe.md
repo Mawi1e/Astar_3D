@@ -1,4 +1,4 @@
-# **AstarImpl_3D**
+# **Astar_3D**
 
 + A project that performs the **Astar** algorithm in a 3D map.
 + 3Dマップで **Astar**アルゴリズムを実行するプロジェクトです。
