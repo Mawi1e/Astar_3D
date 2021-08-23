@@ -1,4 +1,4 @@
-# **AstarImpl_3D**
+# **Astar_3D**
 
 + A project that performs the **Astar** algorithm in a 3D map.
 + 3Dマップで **Astar**アルゴリズムを実行するプロジェクトです。
@@ -18,6 +18,16 @@ enum class LanguageSelector {
 		Japanese = 2,
 		Korean = 3,
 };
+```
+
+## **Astar::Astar(bool)**
+
+You can prevent **diagonal movements.**
+**斜め向かいの移動**を防止できます。
+**대각선 이동**을 방지할 수 있습니다.
+
+```cpp
+explicit(true) Astar(bool) noexcept;
 ```
 
 # **Map File Format**
@@ -68,6 +78,8 @@ enum class LanguageSelector {
 
 ![](https://github.com/Mawi1e/Astar_3D/blob/main/Pictures/1_1.PNG)
 ![](https://github.com/Mawi1e/Astar_3D/blob/main/Pictures/1_2.PNG)
+![](https://github.com/Mawi1e/Astar_3D/blob/main/Pictures/2_1.PNG)
+![](https://github.com/Mawi1e/Astar_3D/blob/main/Pictures/2_2.PNG)
 
 
 # **Reference**

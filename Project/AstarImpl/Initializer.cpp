@@ -203,7 +203,11 @@ namespace mawile {
 		).c_str());
 
 		if ((this->_Astar) == nullptr) {
-			(this->_Astar) = new mawile::Astar;
+
+			/**
+					@brief Freezing Z Slope Movement
+			*/
+			(this->_Astar) = new mawile::Astar(false);
 		}
 
 		(this->_LanguageSelector) = _LanguageSelector;

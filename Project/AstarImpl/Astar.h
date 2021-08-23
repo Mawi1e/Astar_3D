@@ -57,13 +57,14 @@ namespace mawile {
 		void BacktrackingMap(std::vector<std::vector<std::vector<Cell>>>&, Coordinate);
 		std::vector<Coordinate> GetPath();
 
-		explicit(true) Astar() noexcept;
+		explicit(true) Astar(bool) noexcept;
 
 	private:
 		std::vector<Coordinate>			Path;
 		std::vector<std::vector<std::vector<int>>>*	Map;
 		Coordinate						Src, Dst;
 		int								Depths, Cols, Rows;
+		bool							Freeze_Z = false;
 
 	};
 }

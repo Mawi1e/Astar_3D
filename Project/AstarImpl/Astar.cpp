@@ -142,36 +142,38 @@ namespace mawile {
 				}
 			}
 
-			for (std::size_t i = 0; i < 8; ++i) {
-				int Nextx = Currentx + AstarFunc::Dx3[i];
-				int Nexty = Currenty + AstarFunc::Dy3[i];
-				int Nextz = Currentz + AstarFunc::Dz3[i];
+			if (this->Freeze_Z == false) {
+				for (std::size_t i = 0; i < 8; ++i) {
+					int Nextx = Currentx + AstarFunc::Dx3[i];
+					int Nexty = Currenty + AstarFunc::Dy3[i];
+					int Nextz = Currentz + AstarFunc::Dz3[i];
 
-				if (AstarFunc::isInRange(Depths, Rows, Cols, Nextz, Nexty, Nextx)) {
-					if (AstarFunc::isDestination(Nextz, Nexty, Nextx, Dst)) {
-						CellDetails[Nextz][Nexty][Nextx].parent_x = Currentx;
-						CellDetails[Nextz][Nexty][Nextx].parent_y = Currenty;
-						CellDetails[Nextz][Nexty][Nextx].parent_z = Currentz;
-						BacktrackingMap(CellDetails, Dst);
-						return true;
-					}
-					else if (closedList[Nextz][Nexty][Nextx] == false &&
-						AstarFunc::isUnBlocked(Map, Nextz, Nexty, Nextx)) {
-						Newg = CellDetails[Currentz][Currenty][Currentx].g + 1.732;
-						Newh = AstarFunc::Distance(Nextx, Nexty, Nextz, Dst.x, Dst.y, Dst.z);
-						Newf = Newg + Newh;
-
-						if (CellDetails[Nextz][Nexty][Nextx].f == AstarFunc::INF ||
-							CellDetails[Nextz][Nexty][Nextx].f > Newf) {
-							CellDetails[Nextz][Nexty][Nextx].g = Newg;
-							CellDetails[Nextz][Nexty][Nextx].h = Newh;
-							CellDetails[Nextz][Nexty][Nextx].f = Newf;
-
+					if (AstarFunc::isInRange(Depths, Rows, Cols, Nextz, Nexty, Nextx)) {
+						if (AstarFunc::isDestination(Nextz, Nexty, Nextx, Dst)) {
 							CellDetails[Nextz][Nexty][Nextx].parent_x = Currentx;
 							CellDetails[Nextz][Nexty][Nextx].parent_y = Currenty;
 							CellDetails[Nextz][Nexty][Nextx].parent_z = Currentz;
+							BacktrackingMap(CellDetails, Dst);
+							return true;
+						}
+						else if (closedList[Nextz][Nexty][Nextx] == false &&
+							AstarFunc::isUnBlocked(Map, Nextz, Nexty, Nextx)) {
+							Newg = CellDetails[Currentz][Currenty][Currentx].g + 1.732;
+							Newh = AstarFunc::Distance(Nextx, Nexty, Nextz, Dst.x, Dst.y, Dst.z);
+							Newf = Newg + Newh;
 
-							openList.insert({ Newf, { Nextz, Nexty, Nextx } });
+							if (CellDetails[Nextz][Nexty][Nextx].f == AstarFunc::INF ||
+								CellDetails[Nextz][Nexty][Nextx].f > Newf) {
+								CellDetails[Nextz][Nexty][Nextx].g = Newg;
+								CellDetails[Nextz][Nexty][Nextx].h = Newh;
+								CellDetails[Nextz][Nexty][Nextx].f = Newf;
+
+								CellDetails[Nextz][Nexty][Nextx].parent_x = Currentx;
+								CellDetails[Nextz][Nexty][Nextx].parent_y = Currenty;
+								CellDetails[Nextz][Nexty][Nextx].parent_z = Currentz;
+
+								openList.insert({ Newf, { Nextz, Nexty, Nextx } });
+							}
 						}
 					}
 				}
@@ -220,7 +222,7 @@ namespace mawile {
 		return (this->Path);
 	}
 
-	Astar::Astar() noexcept {
-
+	Astar::Astar(bool Freeze_Z = false) noexcept {
+		(this->Freeze_Z) = Freeze_Z;
 	}
 }

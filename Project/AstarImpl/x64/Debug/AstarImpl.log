@@ -1,0 +1,3 @@
+﻿  Initializer.cpp
+W:\Github\AstarImpl_3D\Project\AstarImpl\Initializer.cpp(154,7): warning C4566: character represented by universal-character-name '\u7D4C' cannot be represented in the current code page (949)
+  AstarImpl.vcxproj -> W:\Github\AstarImpl_3D\Project\x64\Debug\AstarImpl.exe
